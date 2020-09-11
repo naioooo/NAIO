@@ -1,0 +1,51 @@
+def tgoto(x,y):
+    t.penup()
+    t.goto(x,y)
+    t.pendown()    
+
+def giyeok():
+    t.fd(100)
+    t.rt(120)
+    t.fd(100)
+
+def m():
+    t.fd(90)
+    t.rt(90)
+    t.fd(45)
+    t.rt(90)
+    t.fd(90)
+    t.rt(90)
+    t.fd(45)
+
+import turtle as t
+
+t.reset()
+tgoto(-200,200)
+giyeok()
+tgoto(-80,220)
+t.lt(30)
+t.forward(140)
+tgoto(-180,60)
+t.lt(90)
+m()
+tgoto(-50,200)
+t.rt(90)
+m()
+tgoto(60, 220)
+t.bk(140)
+tgoto(-30,60)
+t.bk(45)
+t.rt(90)
+t.fd(90)
+tgoto(110,200)
+giyeok()
+tgoto(100,80)
+t.lt(120)
+t.fd(120)
+t.rt(90)
+tgoto(140,80)
+t.fd(50)
+tgoto(180,80)
+t.fd(50)
+
+t.exitonclick()
