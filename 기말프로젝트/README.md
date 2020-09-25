@@ -13,7 +13,7 @@
 
 예)
 
-![Alt text](/res/다운로드.jpg)
+![Alt text](/res/example.jpg)
 
 
 
@@ -131,7 +131,7 @@
 
 - 다른 State 로 이동한다면, 각 이동에 대한 조건 및 방법
 
-![Alt text](/res/제목 없음.png)
+![Alt text](/res/state.jpg)
 
 
 
