@@ -3,7 +3,7 @@
 
 ## 1. 게임의 소개
 
-__- 제목 : 일대일 2D 축구__
+__제목 : 일대일 2D 축구__
 
  
 
@@ -13,7 +13,7 @@ __- 제목 : 일대일 2D 축구__
 
 사진 클릭시 게임에 대한 설명으로 이동
 
-[![Alt text](/res/example.jpg)](https://namu.wiki/w/Head%20Soccer)
+[![Alt text](![example](https://user-images.githubusercontent.com/34563332/94274827-22ec5880-ff81-11ea-9411-9277b92db746.jpg))](https://namu.wiki/w/Head%20Soccer)
 
 
 
@@ -132,7 +132,7 @@ __- 처리할 키/마우스 등 이벤트__
 __- 다른 State 로 이동한다면, 각 이동에 대한 조건 및 방법__
 
 
-![Alt text](/res/state.jpg)
+![Alt text](https://user-images.githubusercontent.com/34563332/94274831-241d8580-ff81-11ea-9efd-3fbad3b25263.jpg)
 
 
 
