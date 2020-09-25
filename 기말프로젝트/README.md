@@ -13,7 +13,7 @@ __- 제목 : 일대일 2D 축구__
 
 예)
 
-![Alt text](/res/example.jpg)
+[![Alt text](/res/example.jpg)](https://namu.wiki/w/Head%20Soccer)
 
 
 
