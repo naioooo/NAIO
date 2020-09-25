@@ -13,7 +13,7 @@ __제목 : 일대일 2D 축구__
 
 사진 클릭시 게임에 대한 설명으로 이동
 
-[![Alt text](![example](https://user-images.githubusercontent.com/34563332/94274827-22ec5880-ff81-11ea-9411-9277b92db746.jpg))](https://namu.wiki/w/Head%20Soccer)
+[![Alt text](https://user-images.githubusercontent.com/34563332/94274827-22ec5880-ff81-11ea-9411-9277b92db746.jpg)](https://namu.wiki/w/Head%20Soccer)
 
 
 
