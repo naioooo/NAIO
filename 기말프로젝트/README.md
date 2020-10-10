@@ -172,6 +172,8 @@ __- 다루지 않는 것 같아서 수업에 다루어 달라고 요청할 기�
 
 ![Alt text](https://user-images.githubusercontent.com/34563332/95649644-7f22b100-0b19-11eb-8a63-8639d195fbdf.png)
 
+![Alt text](https://user-images.githubusercontent.com/34563332/95649704-cb6df100-0b19-11eb-9783-82b883470f51.png)
+
 ![Alt text](https://user-images.githubusercontent.com/34563332/95649647-83e76500-0b19-11eb-9b90-1f4a563754c9.png)
 
 ![Alt text](https://user-images.githubusercontent.com/34563332/95649655-91045400-0b19-11eb-9062-e7a45d30747e.png)
@@ -180,10 +182,11 @@ __- 다루지 않는 것 같아서 수업에 다루어 달라고 요청할 기�
 
 ![Alt text](https://user-images.githubusercontent.com/34563332/95649664-99f52580-0b19-11eb-92f5-80fd46f03f49.png)
 
-![Alt text](https://user-images.githubusercontent.com/34563332/95649666-9eb9d980-0b19-11eb-85d0-bebc444974ad.png)
+![Alt text](https://user-images.githubusercontent.com/34563332/95649718-dd4f9400-0b19-11eb-973d-1d1017e8ea22.png)
 
-![Alt text](https://user-images.githubusercontent.com/34563332/95649669-a4172400-0b19-11eb-9f23-65df6d58e0aa.png)
+![Alt text](https://user-images.githubusercontent.com/34563332/95649722-e3457500-0b19-11eb-9147-a6ab976b107e.png)
 
+![Alt text](https://user-images.githubusercontent.com/34563332/95649723-e476a200-0b19-11eb-8a3c-81e99a9a3c91.png)
 
  
 
