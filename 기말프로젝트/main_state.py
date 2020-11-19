@@ -4,6 +4,17 @@ import ball
 from player import Player
 from background import Background
 
+def collides_distance(a, b):
+    ax,ay = a.pos
+    bx,by = b.pos
+    distance_sqrt = (ax - bx) ** 2 + (ay - by) ** 2
+    radius_sum = a.radius + b.radius
+    return distance_sqrt < radius_sum ** 2
+
+def check_collision():
+    if collides_distance(player, ball):
+        print("충돌")
+
 def enter():
     gfw.world.init(['bg', 'ball', 'player'])
 
@@ -24,6 +35,7 @@ def exit():
 
 def update():
     gfw.world.update()
+    check_collision()
 
 
 

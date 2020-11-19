@@ -15,6 +15,7 @@ class Player:
         self.jump = False
         self.jump_power = 0
         self.jump_direction = 0
+        self.radius = self.image.w // 2
 
     def jump_check(self):
         if self.jump == True:
@@ -40,7 +41,7 @@ class Player:
     def update(self):
         self.jump_check()
         self.x += self.dx * gfw.delta_time * self.speed
-        self.y += self.dy * gfw.delta_time * self.speed
+        self.y += self.dy * gfw.delta_time * (self.speed // 2)
         self.pos = self.x, self.y
 
 
@@ -59,7 +60,7 @@ class Player:
             elif e.key == SDLK_UP:
                 if self.jump == False:
                     self.jump = True
-                    self.jump_power = 10
+                    self.jump_power = 15
                     self.jump_direction = 1
             elif e.key == SDLK_DOWN:
                 pass
