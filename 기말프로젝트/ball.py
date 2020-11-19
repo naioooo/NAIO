@@ -4,30 +4,51 @@ import random
 
 MOVE_POS = 300
 
-GRAVITY = 0.2
+GRAVITY = 0.1
 
 def init():
-    global image, pos, delta_x, delta_y, radius
+    global image, pos, dx, dy, radius, x,y, width
     image = gfw.image.load('res/ball1.png')
     pos = get_canvas_width() // 2, get_canvas_height() // 2
-    delta_x, delta_y = 0, 0
+    x, y = pos
+    dx, dy = 0, 0
     radius = image.w // 2
+
+    width = get_canvas_width()
 
 
 def update():
-    global pos, delta_x, delta_y
+    global pos, dx, dy, x, y, width
     x, y = pos
-    x += delta_x * MOVE_POS * gfw.delta_time
-    y += delta_y * MOVE_POS * gfw.delta_time
-    delta_y -= GRAVITY
+    x += dx * MOVE_POS * gfw.delta_time
+    y += dy * MOVE_POS * gfw.delta_time
+    dy -= GRAVITY
+    if dx > 0:
+        dx -= GRAVITY
+    elif dx < 0:
+        dx += GRAVITY
     hw, hh = image.w // 2, image.h // 2
 
+    left, right = x - radius,  x + radius
+    if left <= 0:
+        dx = -dx
+        x = radius
+    elif right >= width:
+        dx = -dx
+        x = width - radius
+
+
     bottom = y - radius
-    if bottom < get_canvas_height() // 2 - 225 and delta_y < 0:
+
+    if bottom < get_canvas_height() // 2 - 225 and dy < 0:
         rand = random.randrange(8,9) / 10
-        delta_y *= -rand
-        if delta_y <= 1:
-            delta_y = 0
+        dy *= -rand
+        if dy <= 1:
+            dy = 0
+
+
+    if bottom < get_canvas_height() // 2 - 225:
+        y =  get_canvas_height() // 2 - 225 + radius
 
     pos = x, y
 
