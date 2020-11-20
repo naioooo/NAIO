@@ -23,10 +23,7 @@ def update():
     x += dx * MOVE_POS * gfw.delta_time
     y += dy * MOVE_POS * gfw.delta_time
     dy -= GRAVITY
-    if dx > 0:
-        dx -= GRAVITY
-    elif dx < 0:
-        dx += GRAVITY
+
     hw, hh = image.w // 2, image.h // 2
 
     left, right = x - radius,  x + radius
@@ -39,6 +36,13 @@ def update():
 
 
     bottom = y - radius
+
+
+    if bottom < get_canvas_height() // 2 - 225:
+        if dx > 0:
+            dx -= 1.0
+        elif dx < 0:
+            dx += 1.0
 
     if bottom < get_canvas_height() // 2 - 225 and dy < 0:
         rand = random.randrange(8,9) / 10
