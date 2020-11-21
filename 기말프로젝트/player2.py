@@ -3,16 +3,16 @@ import gfw
 
 GRAVITY = 0.5
 
-class Player:
+class Player2:
 
     def __init__(self):
 
-        self.x, self.y = get_canvas_width() // 2 - 200, get_canvas_height() // 2 - 200
+        self.x, self.y = get_canvas_width() // 2 + 200, get_canvas_height() // 2 - 200
         self.pos = self.x, self.y
         self.dx = 0
         self.dy = 0
         self.speed = 200
-        self.image =  gfw.image.load('res/pikachu1_sprite.png')
+        self.image =  gfw.image.load('res/pikachu2_sprite.png')
         self.jump = False
         self.jump_power = 0
         self.jump_direction = 0
@@ -23,7 +23,7 @@ class Player:
         self.fidx = 0
 
     def reset(self):
-        self.x, self.y = get_canvas_width() // 2 - 200, get_canvas_height() // 2 - 200
+        self.x, self.y = get_canvas_width() // 2 + 200, get_canvas_height() // 2 - 200
         self.pos = self.x, self.y
         self.dy = 0
         self.jump = False
@@ -72,32 +72,31 @@ class Player:
 
 
     def draw(self):
-
         sx = self.fidx * 65
         self.image.clip_draw(sx, 0, 65, 58, *self.pos)
 
     def handle_event(self, e):
 
         if e.type == SDL_KEYDOWN:
-            if e.key == SDLK_a:
+            if e.key == SDLK_LEFT:
                 self.dx -= 1
-            elif e.key == SDLK_d:
+            elif e.key == SDLK_RIGHT:
                 self.dx += 1
-            elif e.key == SDLK_w:
+            elif e.key == SDLK_UP:
                 if self.jump == False:
                     self.jump = True
                     self.jump_power = 10
                     self.jump_direction = 1
-            elif e.key == SDLK_s:
+            elif e.key == SDLK_DOWN:
                 pass
 
         elif e.type == SDL_KEYUP:
-            if e.key == SDLK_a:
+            if e.key == SDLK_LEFT:
                 self.dx += 1
-            elif e.key == SDLK_d:
+            elif e.key == SDLK_RIGHT:
                 self.dx -= 1
-            elif e.key == SDLK_w:
+            elif e.key == SDLK_UP:
                 pass
-            elif e.key ==  SDLK_s:
+            elif e.key == SDLK_DOWN:
                 pass
 
