@@ -2,6 +2,21 @@ import gfw
 from pico2d import *
 from gobj import *
 
+class Background2:
+    def __init__(self, imageName):
+        self.imageName = imageName
+        self.image = gfw.image.load(res(imageName))
+        self.target = None
+        self.cw, self.ch = get_canvas_width(), get_canvas_height()
+        self.win_rect = 0, 0, self.cw, self.image.h + 20
+        self.center = self.image.w // 2, self.image.h // 2
+        hw, hh = self.cw // 2, self.    ch // 2
+        self.boundary = hw, hh, self.image.w - hw, self.image.h - hh
+    def update(self):
+        pass
+    def draw(self):
+        self.image.clip_draw_to_origin(*self.win_rect, 0, 0)
+
 class Background:
     def __init__(self, imageName):
         self.imageName = imageName

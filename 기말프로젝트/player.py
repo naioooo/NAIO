@@ -7,12 +7,14 @@ class Player:
 
     def __init__(self):
 
-        self.x, self.y = get_canvas_width() // 2 - 200, get_canvas_height() // 2 - 200
+        self.x, self.y = get_canvas_width() // 2 - 200, get_canvas_height() // 2 - 197
         self.pos = self.x, self.y
         self.dx = 0
         self.dy = 0
         self.speed = 200
-        self.image =  gfw.image.load('res/pikachu1_sprite.png')
+        self.image_walk =  gfw.image.load('res/pikachu1_sprite.png')
+        self.image = gfw.image.load('res/pikachu1.png')
+        self.image_jump = gfw.image.load('res/pikachu_jump1.png')
         self.jump = False
         self.jump_power = 0
         self.jump_direction = 0
@@ -61,7 +63,11 @@ class Player:
         self.move_check()
         self.jump_check()
         self.x += self.dx * gfw.delta_time * self.speed
+        if self.x < self.radius:
+            self.x = self.radius
         self.y += self.dy * gfw.delta_time * (self.speed // 2)
+        if self.x > get_canvas_width() - self.radius:
+            self.x =  get_canvas_width() - self.radius
         self.pos = self.x, self.y
 
         self.time += gfw.delta_time
@@ -73,8 +79,14 @@ class Player:
 
     def draw(self):
 
+
         sx = self.fidx * 65
-        self.image.clip_draw(sx, 0, 65, 58, *self.pos)
+        if self.jump == False and self.dx == 0:
+            self.image.draw(*self.pos)
+        elif self.jump == False and self.dx != 0  :
+            self.image_walk.clip_draw(sx, 0, 65, 58, *self.pos)
+        elif self.jump == True:
+            self.image_jump.clip_draw(sx, 0, 65, 58, *self.pos)
 
     def handle_event(self, e):
 
@@ -88,6 +100,8 @@ class Player:
                     self.jump = True
                     self.jump_power = 10
                     self.jump_direction = 1
+                    self.time = 0
+                    self.fidx = 0
             elif e.key == SDLK_s:
                 pass
 
