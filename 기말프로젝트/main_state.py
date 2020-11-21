@@ -11,7 +11,7 @@ from player2 import Player2
 from background import Background
 from background import Background2
 
-
+SCORE_TEXT_COLOR = (255, 255, 255)
 
 
 def enter():
@@ -40,7 +40,9 @@ def enter():
 
     game_set.init()
 
-
+    global time, font
+    time = 0
+    font = gfw.font.load(('res/ENCR10B.TTF'), 20)
 
 
 def exit():
@@ -48,7 +50,8 @@ def exit():
 
 
 def update():
-    global player1, player2, ball
+    global player1, player2, ball, time
+    time += gfw.delta_time
     game_set.update()
     if game_set.game_start == True:
         gfw.world.update()
@@ -70,6 +73,9 @@ def reset():
 
 def draw():
     gfw.world.draw()
+
+    global time, font
+    font.draw(10, 580, "time: %.1f" % time, SCORE_TEXT_COLOR)
 
 def handle_event(e):
 
