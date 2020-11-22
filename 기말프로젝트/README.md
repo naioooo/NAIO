@@ -188,7 +188,22 @@ __- 다루지 않는 것 같아서 수업에 다루어 달라고 요청할 기�
 
 ![Alt text](https://user-images.githubusercontent.com/34563332/95649723-e476a200-0b19-11eb-8a3c-81e99a9a3c91.png)
 
- 
+ __- 기말프로젝트 2차 발표 ppt 내용
+
+![Alt text](https://user-images.githubusercontent.com/34563332/99911554-a4b9f180-2d38-11eb-8d5a-c414ba260b95.PNG)
+
+![Alt text](https://user-images.githubusercontent.com/34563332/99911557-ad122c80-2d38-11eb-990a-b28a4b9242d4.PNG)
+
+![Alt text](https://user-images.githubusercontent.com/34563332/99911560-b26f7700-2d38-11eb-98e7-828ce158b091.PNG)
+
+![Alt text](https://user-images.githubusercontent.com/34563332/99911563-b3a0a400-2d38-11eb-8826-77c8e82dc470.PNG)
+
+![Alt text](https://user-images.githubusercontent.com/34563332/99911565-b4d1d100-2d38-11eb-9704-246ae2b84dc1.PNG)
+
+![Alt text](https://user-images.githubusercontent.com/34563332/99911566-b56a6780-2d38-11eb-9f43-6e0ad5e09b97.PNG)
+
+![Alt text](https://user-images.githubusercontent.com/34563332/99911568-b602fe00-2d38-11eb-8a1b-a6c46879791d.PNG)
+
 
  
 
