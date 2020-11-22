@@ -13,7 +13,7 @@ def update():
     global elapsed
     elapsed += gfw.delta_time
     print(elapsed)
-    if elapsed > 2.0:
+    if elapsed > 1.3:
         gfw.change(title_state)
 
 

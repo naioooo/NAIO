@@ -29,7 +29,7 @@ def data_stream(a, b):
     nv2h = (v1h - v2h) * (1 + e) / (mj / mi + 1) + v2h
 
     # 속도의 수평, 수직 성분을 화면상 x, y 성분으로 수정
-    b.dx = nv2h * math.cos(angle) + v2v * math.sin(angle)
+    b.dx = nv2h * math.cos(angle) + v2v * math.sin(angle) // 2
     b.dy = (nv2h * math.sin(angle) - v2v * math.cos(angle)) // 2
 
 def distance_check(ax, ay,  bx, by ):
