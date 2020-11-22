@@ -76,7 +76,7 @@ def update():
         if check == 2:
             score.score2 += 1
             reset()
-        if time >= 5:
+        if time >= 90:
 
             game_set.sound.stop()
             game_set.game_start = False
