@@ -5,6 +5,9 @@ import ball_check
 import goal
 import goal_check
 import game_set
+import end_state1
+import end_state2
+import end_state3
 from score import Score
 from player import Player
 from player2 import Player2
@@ -12,7 +15,8 @@ from background import Background
 from background import Background2
 from background import HorzScrollBackground
 
-SCORE_TEXT_COLOR = (255, 255, 255)
+TIME_TEXT_COLOR = (255, 100, 255)
+SCORE_TEXT_COLOR = (0, 0, 0)
 
 
 
@@ -57,9 +61,10 @@ def exit():
 
 
 def update():
-    global player1, player2, ball, time
+    global player1, player2, ball, time, font
 
     game_set.update()
+
     if game_set.game_start == True:
         gfw.world.update()
         time += gfw.delta_time
@@ -71,9 +76,20 @@ def update():
         if check == 2:
             score.score2 += 1
             reset()
-        if time >= 10:
-            game_reset()
+        if time >= 5:
+
+            game_set.sound.stop()
             game_set.game_start = False
+            if  score.display1 > score.display2:
+                gfw.push(end_state1)
+            elif  score.display1 < score.display2:
+                gfw.push(end_state2)
+            elif score.display1 == score.display2:
+                gfw.push(end_state3)
+            game_reset()
+
+
+
 
 def reset():
     ball.reset()
@@ -93,7 +109,7 @@ def draw():
     gfw.world.draw()
 
     global time, font
-    font.draw(10, 560, "time: %.1f" % time, SCORE_TEXT_COLOR)
+    font.draw(10, 560, "time: %.1f" % time, TIME_TEXT_COLOR)
 
 def handle_event(e):
 
@@ -111,6 +127,15 @@ def handle_event(e):
         player1.handle_event(e)
         player2.handle_event(e)
 
+
+
+
+def pause():
+    pass
+
+
+def resume():
+    pass
 
 if __name__ == '__main__':
     gfw.run_main()

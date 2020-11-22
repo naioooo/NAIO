@@ -1,20 +1,16 @@
 import gfw
 from pico2d import *
-import title_state
+import main_state
 
 
 def enter():
-    global image, elapsed
-    image = load_image('res/ea-sports.jpg')
-    elapsed = 0
+    global image
+
+    image = load_image('res/title.png')
 
 
 def update():
-    global elapsed
-    elapsed += gfw.delta_time
-    print(elapsed)
-    if elapsed > 2.0:
-        gfw.change(title_state)
+    pass
 
 
 def draw():
@@ -26,6 +22,8 @@ def handle_event(e):
         gfw.quit()
     elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
         gfw.quit()
+    elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_SPACE):
+        gfw.push(main_state)
 
 
 def exit():

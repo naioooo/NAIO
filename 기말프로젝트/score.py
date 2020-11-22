@@ -7,6 +7,8 @@ class Score:
         self.right, self.y = right, y
         self.image = gfw.image.load('res/number_24x32.png')
         self.digit_width = self.image.w // 10
+        self.setscore1 = 0
+        self.setscore2 = 0
         self.reset()
 
     def reset(self):
@@ -40,6 +42,8 @@ class Score:
             score2 //= 10
 
     def update(self):
+        self.setscore1 = self.display1
+        self.setscore2 = self.display2
         if self.display2 < self.score2:
             self.display2 += 1
         if self.display1 < self.score1:

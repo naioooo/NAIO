@@ -75,7 +75,10 @@ class Player2:
             self.x = get_canvas_width() - self.radius
         self.pos = self.x, self.y
 
-        self.time += gfw.delta_time
+        if self.dx == 1:
+            self.time += gfw.delta_time
+        elif self.dx == -1:
+            self.time -= gfw.delta_time
         frame = self.time * 7
         self.fidx = int(frame) % 7
 
