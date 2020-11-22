@@ -15,7 +15,7 @@ from background import Background
 from background import Background2
 from background import HorzScrollBackground
 
-TIME_TEXT_COLOR = (255, 100, 255)
+TIME_TEXT_COLOR = (0, 0, 0)
 SCORE_TEXT_COLOR = (0, 0, 0)
 
 

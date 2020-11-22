@@ -21,16 +21,16 @@ class Score:
         x = self.right
         score1, score2  = self.display1, self.display2
         if self.display1 == 0:
-            self.image.clip_draw(0, 0, self.digit_width, self.image.h, x + 100, self.y)
+            self.image.clip_draw(0, 0, self.digit_width, self.image.h, x + 100, self.y - 10)
         if self.display2 == 0:
-            self.image.clip_draw(0, 0, self.digit_width, self.image.h, x - 150, self.y)
+            self.image.clip_draw(0, 0, self.digit_width, self.image.h, x - 150, self.y - 10)
 
         while score1 > 0:
             digit = score1 % 10
             sx = digit * self.digit_width
             # print(type(sx), type(digit), type(self.digit_width))
             x -= self.digit_width
-            self.image.clip_draw(sx, 0, self.digit_width, self.image.h, x + 100, self.y)
+            self.image.clip_draw(sx, 0, self.digit_width, self.image.h, x + 100, self.y - 10)
             score1 //= 10
         x = self.right
         while score2 > 0:
@@ -38,7 +38,7 @@ class Score:
             sx = digit * self.digit_width
             # print(type(sx), type(digit), type(self.digit_width))
             x -= self.digit_width
-            self.image.clip_draw(sx, 0, self.digit_width, self.image.h, x - 150, self.y)
+            self.image.clip_draw(sx, 0, self.digit_width, self.image.h, x - 150, self.y - 10)
             score2 //= 10
 
     def update(self):
