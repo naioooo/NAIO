@@ -8,7 +8,7 @@ class Background2:
         self.image = gfw.image.load(res(imageName))
         self.target = None
         self.cw, self.ch = get_canvas_width(), get_canvas_height()
-        self.win_rect = 0, 0, self.cw, self.image.h + 20
+        self.win_rect = 0, 0, self.cw, self.image.h + 30
         self.center = self.image.w // 2, self.image.h // 2
         hw, hh = self.cw // 2, self.    ch // 2
         self.boundary = hw, hh, self.image.w - hw, self.image.h - hh
@@ -158,7 +158,7 @@ class HorzScrollBackground:
             sl = self.image.w - sw
             src = sl, 0, sw, self.image.h
             dw = int(sw * self.ch / self.image.h)
-            dst = curr - dw, 0, dw, self.ch
+            dst = curr - dw, 0, dw , self.ch
             self.image.clip_draw_to_origin(*src, *dst)
         dst_width = round(self.image.w * self.ch / self.image.h)
         while curr + dst_width < self.cw:

@@ -3,17 +3,22 @@ import gfw
 
 
 def handle_event(e):
-    global game_start
-    if e.type == SDLK_SPACE:
-        game_start = True
+    global game_start,sound
+    if e.type == SDL_KEYDOWN:
+        if e.key == SDLK_SPACE:
+            if game_start == False:
+                game_start = True
+                sound.play()
 
 def init():
-    global game_start
-    game_start = True
+    global game_start, sound
+    sound = load_music('res/bgm.mp3')
+    sound.set_volume(20)
+    game_start = False
 
 def update():
-    global game_start
-    game_start = game_start
+    if game_start == False:
+        sound.stop()
 
 
 

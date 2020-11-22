@@ -32,20 +32,41 @@ def data_stream(a, b):
     b.dx = nv2h * math.cos(angle) + v2v * math.sin(angle)
     b.dy = (nv2h * math.sin(angle) - v2v * math.cos(angle)) // 2
 
+def distance_check(ax, ay,  bx, by ):
+    return  (ax - bx) ** 2 + (ay - by) ** 2
 
 def collides_distance(a, b):
-    ax,ay = a.pos
-    bx,by = b.pos
-    distance_sqrt = (ax - bx) ** 2 + (ay - by) ** 2
+    apos = a.pos
+    bpos = b.pos
+    distance_sqrt = distance_check(*apos, *bpos)
     radius_sum = a.radius + b.radius
     return distance_sqrt < radius_sum ** 2
 
 def check_collision(player1, player2, ball):
+    shot1 = load_wav('res/shot1.wav')
+    shot2 = load_wav('res/shot1.wav')
+    shot1.set_volume(1000)
+    shot2.set_volume(1000)
 
-    if collides_distance(player1, ball):
-        data_stream(player1,ball)
-        print("충돌1")
-    if collides_distance(player2, ball):
-        data_stream(player2, ball)
-        print("충돌2")
+    p1_distance = distance_check(*player1.pos, *ball.pos)
+    p2_distance = distance_check(*player2.pos, *ball.pos)
+
+    if p1_distance > p2_distance:
+        if collides_distance(player2, ball):
+            data_stream(player2, ball)
+            shot1.play()
+            print("충돌2")
+        if collides_distance(player1, ball):
+            data_stream(player1,ball)
+            shot2.play()
+            print("충돌1")
+    elif p1_distance < p2_distance:
+        if collides_distance(player1, ball):
+            data_stream(player1, ball)
+            shot1.play()
+            print("충돌1")
+        if collides_distance(player2, ball):
+            data_stream(player2, ball)
+            shot2.play()
+            print("충돌2")
 

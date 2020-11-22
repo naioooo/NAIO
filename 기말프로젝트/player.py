@@ -20,20 +20,24 @@ class Player:
         self.jump_direction = 0
         self.radius = 32
         self.move_distance = (self.dx) ** 2 + (self.dy) ** 2
-
+        self.jump_sound = load_wav('res/pikachu_jump.wav')
+        self.jump_sound.set_volume(10)
         self.time = 0
         self.fidx = 0
+        self.keycount = 0
 
     def reset(self):
         self.x, self.y = get_canvas_width() // 2 - 200, get_canvas_height() // 2 - 200
         self.pos = self.x, self.y
         self.dy = 0
+        self.dx = 0
         self.jump = False
         self.jump_power = 0
         self.jump_direction = 0
         self.move_distance = (self.dx) ** 2 + (self.dy) ** 2
         self.time = 0
         self.fidx = 0
+        self.keycount = 0
 
     def jump_check(self):
         if self.jump == True:
@@ -92,12 +96,17 @@ class Player:
 
         if e.type == SDL_KEYDOWN:
             if e.key == SDLK_a:
-                self.dx -= 1
+                if self.dx >= 0:
+                    self.dx -= 1
+                    self.keycount += 1
             elif e.key == SDLK_d:
-                self.dx += 1
+                if self.dx <= 0:
+                    self.dx += 1
+                    self.keycount += 1
             elif e.key == SDLK_w:
                 if self.jump == False:
                     self.jump = True
+                    self.jump_sound.play()
                     self.jump_power = 10
                     self.jump_direction = 1
                     self.time = 0
@@ -106,12 +115,17 @@ class Player:
                 pass
 
         elif e.type == SDL_KEYUP:
-            if e.key == SDLK_a:
-                self.dx += 1
-            elif e.key == SDLK_d:
-                self.dx -= 1
-            elif e.key == SDLK_w:
-                pass
-            elif e.key ==  SDLK_s:
-                pass
+            if self.keycount > 0:
+                if e.key == SDLK_a:
+                    if self.dx <= 0:
+                        self.dx += 1
+                        self.keycount -= 1
+                elif e.key == SDLK_d:
+                    if self.dx >= 0:
+                        self.dx -= 1
+                        self.keycount -= 1
+                elif e.key == SDLK_w:
+                    pass
+                elif e.key ==  SDLK_s:
+                    pass
 
