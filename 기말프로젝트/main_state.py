@@ -29,6 +29,8 @@ def enter():
     gfw.world.add(gfw.layer.bg2, bg2)
     cloud = HorzScrollBackground('clouds2.png')
     cloud.speed = 10
+
+    
     gfw.world.add(gfw.layer.cloud, cloud)
 
     ball.init()
