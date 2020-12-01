@@ -34,7 +34,7 @@ def data_stream(a, b):
 
 def distance_check(ax, ay,  bx, by ):
     return  (ax - bx) ** 2 + (ay - by) ** 2
-
+ 
 def collides_distance(a, b):
     apos = a.pos
     bpos = b.pos
