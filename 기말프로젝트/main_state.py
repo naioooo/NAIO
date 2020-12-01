@@ -30,7 +30,7 @@ def enter():
     cloud = HorzScrollBackground('clouds2.png')
     cloud.speed = 10
 
-    
+
     gfw.world.add(gfw.layer.cloud, cloud)
 
     ball.init()
@@ -52,10 +52,12 @@ def enter():
     game_set.init()
 
 
-    global time, font
+    global time, font,check,DELTA_TIME,GOAL_image
     time = 0
     font = gfw.font.load(('res/NAL Hand.otf'), 50)
-
+    check = 0
+    DELTA_TIME = 0
+    GOAL_image = gfw.image.load('res/goalll.png')
 
 
 def exit():
@@ -63,20 +65,27 @@ def exit():
 
 
 def update():
-    global player1, player2, ball, time, font
+    global player1, player2, ball, time, font,check,DELTA_TIME
 
     game_set.update()
 
     if game_set.game_start == True:
-        gfw.world.update()
-        time += gfw.delta_time
+        if DELTA_TIME % 2 != 1:
+            gfw.world.update()
+        if check == 0:
+            time += gfw.delta_time
         ball_check.check_collision(player1, player2, ball)
-        check = goal_check.check_collision()
-        if check == 1:
-            score.score1 += 1
-            reset()
-        if check == 2:
-            score.score2 += 1
+        if check == 0:
+            check = goal_check.check_collision()
+            if check == 1:
+                score.score1 += 1
+            if check == 2:
+                score.score2 += 1
+        else:
+           DELTA_TIME += gfw.delta_time
+        if DELTA_TIME >= 2:
+            check = 0
+            DELTA_TIME = 0
             reset()
         if time >= 90:
 
@@ -110,12 +119,14 @@ def game_reset():
 def draw():
     gfw.world.draw()
 
-    global time, font
-    font.draw(10, 560, "time: %.1f" % time, TIME_TEXT_COLOR)
+    global time, font, GOAL_image, check
+    font.draw(10, 560, "time: %.0f" % time, TIME_TEXT_COLOR)
+    if check != 0:
+        GOAL_image.draw(get_canvas_width()//2,get_canvas_height()//2)
 
 def handle_event(e):
 
-    global player1,player2
+    global player1,player2,check
     if e.type == SDL_QUIT:
         gfw.quit()
     elif e.type == SDL_KEYDOWN:

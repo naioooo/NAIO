@@ -7,7 +7,6 @@ import math
 
 ball_radius = 20
 
-
 def collides_distance(a1, a2, b):
     a1x,a1y = a1
     a2x, a2y = a2
