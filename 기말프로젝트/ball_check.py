@@ -3,13 +3,13 @@ import gfw
 import ball
 from player import Player
 from player2 import Player2
-
-
 import math
+
 
 elasticity = 0.5
 
 def data_stream(a, b):
+    global shot1
     adx, ady = a.dx, a.dy
     bdx, bdy = b.dx, b.dy
 
@@ -31,6 +31,10 @@ def data_stream(a, b):
     # 속도의 수평, 수직 성분을 화면상 x, y 성분으로 수정
     b.dx = nv2h * math.cos(angle) + v2v * math.sin(angle) // 2
     b.dy = (nv2h * math.sin(angle) - v2v * math.cos(angle)) // 2
+    print("%d",b.dx)
+    if b.dx > 2 or b.dx < -2:
+        shot1.play()
+
 
 def distance_check(ax, ay,  bx, by ):
     return  (ax - bx) ** 2 + (ay - by) ** 2
@@ -43,30 +47,25 @@ def collides_distance(a, b):
     return distance_sqrt < radius_sum ** 2
 
 def check_collision(player1, player2, ball):
-    shot1 = load_wav('res/shot1.wav')
-    shot2 = load_wav('res/shot1.wav')
-    shot1.set_volume(1000)
-    shot2.set_volume(1000)
 
+    global shot1
+    shot1 = load_wav('res/shot1.wav')
+    shot1.set_volume(50)
     p1_distance = distance_check(*player1.pos, *ball.pos)
     p2_distance = distance_check(*player2.pos, *ball.pos)
 
     if p1_distance > p2_distance:
         if collides_distance(player2, ball):
             data_stream(player2, ball)
-            shot1.play()
             print("충돌2")
         if collides_distance(player1, ball):
-            data_stream(player1,ball)
-            shot2.play()
+            data_stream(player1, ball)
             print("충돌1")
     elif p1_distance < p2_distance:
         if collides_distance(player1, ball):
             data_stream(player1, ball)
-            shot1.play()
             print("충돌1")
         if collides_distance(player2, ball):
             data_stream(player2, ball)
-            shot2.play()
             print("충돌2")
 

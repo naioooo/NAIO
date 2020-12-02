@@ -8,7 +8,7 @@ def handle_event(e):
         if e.key == SDLK_SPACE:
             if game_start == False:
                 game_start = True
-                sound.play()
+                sound.repeat_play()
 
 def init():
     global game_start, sound

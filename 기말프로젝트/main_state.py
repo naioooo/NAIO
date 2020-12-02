@@ -52,12 +52,14 @@ def enter():
     game_set.init()
 
 
-    global time, font,check,DELTA_TIME,GOAL_image
+    global time, font,check,DELTA_TIME,GOAL_image,goal_sound
     time = 0
     font = gfw.font.load(('res/NAL Hand.otf'), 50)
     check = 0
     DELTA_TIME = 0
     GOAL_image = gfw.image.load('res/goalll.png')
+    goal_sound = load_wav('res/shout.wav')
+    goal_sound.set_volume(50)
 
 
 def exit():
@@ -65,7 +67,7 @@ def exit():
 
 
 def update():
-    global player1, player2, ball, time, font,check,DELTA_TIME
+    global player1, player2, ball, time, font,check,DELTA_TIME,goal_sound
 
     game_set.update()
 
@@ -79,8 +81,10 @@ def update():
             check = goal_check.check_collision()
             if check == 1:
                 score.score1 += 1
+                goal_sound.play()
             if check == 2:
                 score.score2 += 1
+                goal_sound.play()
         else:
            DELTA_TIME += gfw.delta_time
         if DELTA_TIME >= 2:

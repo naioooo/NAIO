@@ -25,6 +25,7 @@ def handle_event(e):
         gfw.push(main_state)
 
 
+
 def exit():
     global image
     del image
