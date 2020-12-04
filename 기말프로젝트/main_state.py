@@ -53,7 +53,7 @@ def enter():
 
 
     global time, font,check,DELTA_TIME,GOAL_image,goal_sound
-    time = 0
+    time = 60
     font = gfw.font.load(('res/NAL Hand.otf'), 50)
     check = 0
     DELTA_TIME = 0
@@ -76,7 +76,7 @@ def update():
         if DELTA_TIME % 2 != 1:
             gfw.world.update()
         if check == 0:
-            time += gfw.delta_time
+            time -= gfw.delta_time
         ball_check.check_collision(player1, player2, ball)
         if check == 0:
             check = goal_check.check_collision()
@@ -92,7 +92,7 @@ def update():
             check = 0
             DELTA_TIME = 0
             reset()
-        if time >= 90:
+        if time < 0:
 
             game_set.sound.stop()
             game_set.game_start = False
@@ -119,13 +119,13 @@ def game_reset():
     score.score1 = 0
     score.score2 = 0
     reset()
-    time = 0
+    time = 60
 
 def draw():
     gfw.world.draw()
 
     global time, font, GOAL_image, check
-    font.draw(10, 560, "time: %.0f" % time, TIME_TEXT_COLOR)
+    font.draw(get_canvas_width() // 2 - 50, 560, "time: %.0f" % time, TIME_TEXT_COLOR)
     if check != 0:
         GOAL_image.draw(get_canvas_width()//2,get_canvas_height()//2)
 

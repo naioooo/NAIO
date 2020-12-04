@@ -35,6 +35,32 @@ def data_stream(a, b):
     if b.dx > 2 or b.dx < -2:
         shot1.play()
 
+def data_stream2(a, b):
+    global shot1
+    adx, ady = a.dx, a.dy
+    bdx, bdy = b.dx, b.dy
+
+    angle = math.atan2((b.x - a.x), (b.y - a.y))
+
+    v1h = adx*math.cos(angle)+ady*math.sin(angle)
+    v1v = adx*math.sin(angle)-ady*math.cos(angle)
+    v2h = bdx*math.cos(angle)+bdy*math.sin(angle)
+    v2v = bdx*math.sin(angle)-bdy*math.cos(angle)
+
+    # 충돌방향과 수직성분은 그대로
+    # 수평성분은 운동량 보존측과 탄성계수로부터 계산
+    e = elasticity  # 탄성계수
+    mi = 1  # i 입자의 질량
+    mj = 1  # j 입자의 질량
+    nv1h = (v2h - v1h) * (1 + e) / (mi / mj + 1) + v1h
+    nv2h = (v1h - v2h) * (1 + e) / (mj / mi + 1) + v2h
+
+    # 속도의 수평, 수직 성분을 화면상 x, y 성분으로 수정
+    a.dx = nv1h * math.cos(angle) + v1v * math.sin(angle) // 2
+    a.dy = (nv1h * math.sin(angle) - v1v * math.cos(angle)) // 2
+    print("%d",b.dx)
+    if b.dx > 2 or b.dx < -2:
+        shot1.play()
 
 def distance_check(ax, ay,  bx, by ):
     return  (ax - bx) ** 2 + (ay - by) ** 2
@@ -59,11 +85,11 @@ def check_collision(player1, player2, ball):
             data_stream(player2, ball)
             print("충돌2")
         if collides_distance(player1, ball):
-            data_stream(player1, ball)
+            data_stream2(ball, player1)
             print("충돌1")
     elif p1_distance < p2_distance:
         if collides_distance(player1, ball):
-            data_stream(player1, ball)
+            data_stream2(ball, player1)
             print("충돌1")
         if collides_distance(player2, ball):
             data_stream(player2, ball)
