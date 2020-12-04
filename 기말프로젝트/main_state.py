@@ -66,6 +66,7 @@ def exit():
     pass
 
 
+
 def update():
     global player1, player2, ball, time, font,check,DELTA_TIME,goal_sound
 

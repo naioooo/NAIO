@@ -10,6 +10,7 @@ def handle_event(e):
                 game_start = True
                 sound.repeat_play()
 
+
 def init():
     global game_start, sound
     sound = load_music('res/bgm.mp3')
