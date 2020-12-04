@@ -11,7 +11,7 @@ elasticity = 0.5
 def data_stream(a, b):
     global shot1
     adx, ady = a.dx, a.dy
-    bdx, bdy = b.dx, b.dy
+    bdx, bdy = b.dx - 1, b.dy
 
     angle = math.atan2((b.x - a.x), (b.y - a.y))
 
@@ -29,7 +29,7 @@ def data_stream(a, b):
     nv2h = (v1h - v2h) * (1 + e) / (mj / mi + 1) + v2h
 
     # 속도의 수평, 수직 성분을 화면상 x, y 성분으로 수정
-    b.dx = nv2h * math.cos(angle) + v2v * math.sin(angle) // 2
+    b.dx = (nv2h * math.cos(angle) + v2v * math.sin(angle)) // 2
     b.dy = (nv2h * math.sin(angle) - v2v * math.cos(angle)) // 2
     print("%d",b.dx)
     if b.dx > 2 or b.dx < -2:
@@ -38,7 +38,7 @@ def data_stream(a, b):
 def data_stream2(a, b):
     global shot1
     adx, ady = a.dx, a.dy
-    bdx, bdy = b.dx, b.dy
+    bdx, bdy = b.dx + 3, b.dy
 
     angle = math.atan2((b.x - a.x), (b.y - a.y))
 
@@ -56,8 +56,8 @@ def data_stream2(a, b):
     nv2h = (v1h - v2h) * (1 + e) / (mj / mi + 1) + v2h
 
     # 속도의 수평, 수직 성분을 화면상 x, y 성분으로 수정
-    a.dx = nv1h * math.cos(angle) + v1v * math.sin(angle) // 2
-    a.dy = (nv1h * math.sin(angle) - v1v * math.cos(angle)) // 2
+    b.dx = (nv2h * math.cos(angle) + v2v * math.sin(angle)) // 2
+    b.dy = (nv2h * math.sin(angle) - v2v * math.cos(angle)) // 2
     print("%d",b.dx)
     if b.dx > 2 or b.dx < -2:
         shot1.play()
@@ -85,11 +85,11 @@ def check_collision(player1, player2, ball):
             data_stream(player2, ball)
             print("충돌2")
         if collides_distance(player1, ball):
-            data_stream2(ball, player1)
+            data_stream2(player1, ball)
             print("충돌1")
     elif p1_distance < p2_distance:
         if collides_distance(player1, ball):
-            data_stream2(ball, player1)
+            data_stream2(player1, ball)
             print("충돌1")
         if collides_distance(player2, ball):
             data_stream(player2, ball)
